@@ -20,7 +20,10 @@ def music_knowledge_qa(query: str) -> str:
         chain_type="stuff"
     )
 
-    return qa_chain.run(query)
+    response = qa_chain.invoke({"query": query})
+    if isinstance(response, dict):
+        return str(response.get("result") or response.get("output_text") or response)
+    return str(response)
 
 
 @tool("music_similarity_recommender", return_direct=False)
@@ -43,5 +46,4 @@ def music_similarity_recommender(description: str) -> str:
         )
 
     return "\n\n".join(results)
-
 

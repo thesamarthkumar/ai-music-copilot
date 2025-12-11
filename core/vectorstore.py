@@ -1,22 +1,27 @@
 # core/vectorstore.py
-import os
-from typing import Optional
-from langchain_community.vectorstores import Chroma
+from pathlib import Path
+from typing import Optional, Union
+from langchain_chroma import Chroma
 from core.llm import get_embeddings
 
-DEFAULT_DB_DIR = os.path.join(os.path.dirname(__file__), "..", "chroma_db")
+DEFAULT_DB_DIR = (Path(__file__).resolve().parent.parent / "chroma_db").resolve()
 
-def get_vectorstore(collection_name: str, persist_directory: Optional[str] = None):
+def get_vectorstore(
+    collection_name: str,
+    persist_directory: Optional[Union[str, Path]] = None,
+):
     if persist_directory is None:
-        persist_directory = DEFAULT_DB_DIR
+        persist_path = DEFAULT_DB_DIR
+    else:
+        persist_path = Path(persist_directory).expanduser().resolve()
+
+    persist_path.mkdir(parents=True, exist_ok=True)
 
     embeddings = get_embeddings()
 
     vs = Chroma(
         collection_name=collection_name,
         embedding_function=embeddings,
-        persist_directory=persist_directory,
+        persist_directory=str(persist_path),
     )
     return vs
-
-

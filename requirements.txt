@@ -1,6 +1,9 @@
 langchain
 langchain-community
 langchain-core
+langchain-ollama
+langchain-huggingface
+langchain-chroma
 chromadb
 sentence-transformers
 ollama
