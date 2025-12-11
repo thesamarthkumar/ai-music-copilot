@@ -41,7 +41,7 @@ The agent retrieves relevant chunks from your knowledge base and generates groun
 
 * Uses vector similarity search to surface the closest matches.
 
-🎤 To be added later:
+## 🎤 To be added later:
 
 A Stronger Knowledgebase
 * For now, there are a few small markdown files pertaining to specific musicians.
