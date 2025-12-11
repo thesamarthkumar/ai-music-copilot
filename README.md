@@ -41,7 +41,13 @@ The agent retrieves relevant chunks from your knowledge base and generates groun
 
 * Uses vector similarity search to surface the closest matches.
 
-🎤 To be added later: Lyric Intelligence
+🎤 To be added later:
+
+A Stronger Knowledgebase
+* For now, there are a few small markdown files pertaining to specific musicians.
+* Later, a much larger database will be added to improve the app's capabilities.
+
+Lyric Intelligence
 
 * Generate lyrics in various artist styles
 
